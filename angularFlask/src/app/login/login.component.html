@@ -1,0 +1,26 @@
+<div id="login" class="login-container">
+  <div class="login-wrapper">
+    <h4 class="login-title"> Slogan Angular Flask Project </h4>
+    <p class="login-version">Version 1.0<p>
+    <form>
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Username" [formControl]="usernameFormControl" [(ngModel)]="username">
+        <mat-error *ngIf="usernameFormControl.hasError('required')">
+          Username is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Password" type="password" [formControl]="passwordFormControl" [(ngModel)]="password">
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p class="login-error" *ngIf="loginErrorString">{{loginErrorString}}</p>
+    <button class="login-btn" mat-raised-button color="primary" (click)="login()">LOGIN</button>
+    <p class="login-tips">Using correct account and password.</p>
+    </form>
+  </div>
