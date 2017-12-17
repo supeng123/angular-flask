@@ -1,6 +1,4 @@
 #encoding: utf-8
-
-
 DIALECT = 'mysql'
 DRIVER = 'mysqldb'
 USERNAME = 'root'

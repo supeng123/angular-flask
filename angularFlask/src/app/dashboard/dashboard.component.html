@@ -1,3 +1,10 @@
 <p>
   dashboard works!
+  <button type="button" (click)="uploadFile()">上传图片</button>
 </p>
+<input type="file" ng2FileSelect [uploader]="uploader" (change)="selectedFileOnChanged($event)" name="file">
+<hr>
+<img src="{{imageUrl}}" alt="">
+<p>{{targetValue}}</p>
+
+

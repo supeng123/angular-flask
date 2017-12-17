@@ -1,8 +1,6 @@
-// import {Http, Response, Headers} from "@angular/http";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Injectable, EventEmitter} from "@angular/core";
+import {Injectable} from "@angular/core";
 import 'rxjs/Rx';
-import {Observable} from "rxjs";
 
 @Injectable()
 export class AppService {
@@ -23,29 +21,16 @@ export class AppService {
     const body = JSON.stringify(object);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post('http://127.0.0.1:5000/api/login', body, {headers: headers})
-      .map(token => {
-        // const messages = [];
-        // for(let i=0; i < Object.keys(titles).length; i++) {
-        //   messages.push(titles[Object.keys(titles)[i]]);
-        // }
-        return token;
-      })
-      .catch(error =>  Observable.throw(error));
+      .map(messages => messages,
+        error => error);
   }
 
   signUp (object) {
     const body = JSON.stringify(object);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post('http://127.0.0.1:5000/api/signup', body, {headers: headers})
-      .map(titles => {
-        // const messages = [];
-        // for(let i=0; i < Object.keys(titles).length; i++) {
-        //   messages.push(titles[Object.keys(titles)[i]]);
-        // }
-        // return messages;
-        return titles;
-      })
-      .catch(error =>  Observable.throw(error));
+      .map(titles =>  titles,
+            error => error);
   }
 }
 

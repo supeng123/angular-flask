@@ -1,13 +1,8 @@
 #encoding: utf-8
-
-from flask_restful import Resource, abort, reqparse
+from flask_restful import Resource, abort
 from models.user import User
 from extensions import db
-
-loginParse = reqparse.RequestParser()
-loginParse.add_argument('username', type=str)
-loginParse.add_argument('password', type=str)
-
+from reparses import loginParse
 
 class Login(Resource):
 	def post(self):
@@ -17,7 +12,7 @@ class Login(Resource):
 
 		user = User.query.filter(User.username == username).first()
 		isPasswordValid = user.check_password(password)
-		print(isPasswordValid,user)
+
 		if user and isPasswordValid:
 			token = user.generate_auth_token()
 			return token
