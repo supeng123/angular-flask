@@ -6,7 +6,7 @@ import {FileUploader} from "ng2-file-upload";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.less']
 })
 export class DashboardComponent implements OnInit {
   targetValue = '';
@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   token = localStorage.getItem('token');
 
   public uploader: FileUploader = new FileUploader({
-    url:'http://127.0.0.1:5000/api/uploadFile',
+    url:'http://66.42.63.221:5000/api/uploadFile',
     method: 'POST',
     authToken: this.token,
     authTokenHeader: this.token,
@@ -22,9 +22,9 @@ export class DashboardComponent implements OnInit {
   });
 
   constructor(private appService: AppService, private router: Router) {
-    if(!this.appService.isAlReadyLogin()) {
-      this.router.navigate(['/login'], {});
-    }
+    // if(!this.appService.isAlReadyLogin()) {
+    //   this.router.navigate(['/admin/login'], {});
+    // }
   }
 
   selectedFileOnChanged(event:any) {
@@ -44,5 +44,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
 
 }

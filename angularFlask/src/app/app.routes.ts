@@ -1,29 +1,27 @@
 import {NgModule} from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
-
-  {path: 'login', component: LoginComponent},
-
-  {path: '', component: AppComponent, children: [
-    {path: '', component: DashboardComponent},
-    {path: 'index', component: DashboardComponent}
-  ]
+  {
+    path: 'index',
+    loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
   },
-
-  {path: '**', component: NotfoundComponent},
-
+  {
+    path: 'backend',
+    loadChildren: 'app/backend/backend.module#BackendModule'
+  },
+  {path: 'admin/login', component: LoginComponent},
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: '/index',
     pathMatch : 'full'
-  }
+  },
+  {path: '**', component: NotfoundComponent}
 ];
 
 @NgModule({

@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { DashboardComponent } from './dashboard.component';
+import { BlogdetailComponent }  from './blog-detail/blogdetail.component';
+import { BloglistComponent }  from './blog-list/bloglist.component';
+import { DashboardRoutingModule } from './dashboard.routing'
 import {
   MatIconModule,
   MatButtonModule,
@@ -15,7 +19,6 @@ import {
   MatTableModule
 } from '@angular/material';
 import {FileUploadModule} from "ng2-file-upload";
-import { DashboardComponent } from './dashboard.component';
 
 // import { MessageComponent, MessageDetailComponent } from './message/message.component';
 
@@ -23,6 +26,7 @@ import { DashboardComponent } from './dashboard.component';
   imports: [
     CommonModule,
     FormsModule,
+    DashboardRoutingModule,
     MatCardModule,
     MatIconModule,
     MatDialogModule,
@@ -35,9 +39,12 @@ import { DashboardComponent } from './dashboard.component';
     FileUploadModule,
     MatCheckboxModule,
     MatTableModule],
-  exports: [DashboardComponent],
+  exports: [
+    ],
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    BlogdetailComponent,
+    BloglistComponent
   ]
   // entryComponents: [DialogComponent, MessageDetailComponent]
 })

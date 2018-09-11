@@ -1,0 +1,18 @@
+<div class="b-content">
+  <article class="b-single-article" *ngFor="let article of currentPagePosts">
+    <header class="b-single-header">
+      <h2>{{article.title}}</h2>
+      <div class="b-single-title">
+        <span><i class="fa fa-bookmark fa-2x menu-icon" aria-hidden="true"></i>{{article.label}}</span>
+        <span><i class="fa fa-calendar fa-2x menu-icon" aria-hidden="true"></i>{{article.create_time.split('T')[0]}}</span>
+      </div>
+    </header>
+    <section class="b-single-content" [innerHTML]="showLessWords(article.content)">
+    </section>
+    <div class="b-single-foot">
+        <span>
+          <button mat-button (click)="onClick(article.id, article.label)">read more</button>
+        </span>
+    </div>
+  </article>
+</div>

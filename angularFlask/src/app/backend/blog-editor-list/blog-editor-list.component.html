@@ -1,0 +1,55 @@
+<section class="b-editor-list">
+  <p-dataView [value]="posts" [paginator]="true" [rows]="3">
+    <ng-template let-post pTemplate="listItem">
+      <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+        <div class="ui-g-12 ui-md-3" style="text-align:center">
+          {{post.id}}
+        </div>
+        <div class="ui-g-12 ui-md-8 car-details">
+          <div class="ui-g">
+            <div class="ui-g-2 ui-sm-6">Title: </div>
+            <div class="ui-g-10 ui-sm-6"><b>{{post.title}}</b></div>
+
+            <div class="ui-g-2 ui-sm-6">Label: </div>
+            <div class="ui-g-10 ui-sm-6"><b>{{post.label}}</b></div>
+
+            <div class="ui-g-2 ui-sm-6">content: </div>
+            <div class="ui-g-10 ui-sm-6"><b>{{post.content}}</b></div>
+
+            <div class="ui-g-2 ui-sm-6">Time: </div>
+            <div class="ui-g-10 ui-sm-6"><b>{{post.create_time}}</b></div>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-md-1 search-icon">
+          <span>
+            <button class="login-btn" mat-raised-button color="primary" (click)="showDialog(post)">Edit</button>
+          </span>
+          <span>
+            <button class="login-btn" mat-raised-button color="secondary" (click)="deletePost(post)">Delete</button>
+          </span>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+  <p-dialog header="Title" [(visible)]="display" [contentStyle]="{'maximizable':true}">
+    <div class="b-editor">
+      <button class="login-btn" mat-raised-button color="primary" (click)="editPost()">Update</button>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Title" [formControl]="titleFormControl" [(ngModel)]="title">
+          <mat-error *ngIf="titleFormControl.hasError('required')">
+            Title is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <p-dropdown [options]="labels" [(ngModel)]="selectedLabel" placeholder="Select a Category" optionLabel="name" [showClear]="true"></p-dropdown>
+      </p>
+      <div [froalaEditor]="option" [(froalaModel)]="froalaText"></div>
+    </div>
+  </p-dialog>
+</section>
+<!--<button type="button" (click)="uploadFile()">上传图片</button>-->
+<!--<input type="file" ng2FileSelect [uploader]="uploader" (change)="selectedFileOnChanged($event)" name="file">-->
+
+

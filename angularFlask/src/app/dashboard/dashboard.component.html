@@ -1,10 +1,56 @@
-<p>
-  dashboard works!
-  <button type="button" (click)="uploadFile()">上传图片</button>
-</p>
-<input type="file" ng2FileSelect [uploader]="uploader" (change)="selectedFileOnChanged($event)" name="file">
-<hr>
-<img src="{{imageUrl}}" alt="">
-<p>{{targetValue}}</p>
+<ul ngfor="let item of items" class="b-side-navigation">
+  <li>
+    <a [routerLink]="['/index/machine_learning']" routerLinkActive="active">machine learning</a>
+  </li>
+  <li>
+    <a [routerLink]="['/index/deep_learning']" routerLinkActive="active">deep learning</a>
+  </li>
+  <li>
+    <a [routerLink]="['/index/javascript']" routerLinkActive="active">javascript</a>
+  </li>
+  <li>
+    <a [routerLink]="['/index/css']" routerLinkActive="active">css</a>
+  </li>
+  <li>
+    <a [routerLink]="['/index/nodejs']" routerLinkActive="active">nodejs</a>
+  </li>
+  <li>
+    <a [routerLink]="['/index/insight']" routerLinkActive="active">insights</a>
+  </li>
+</ul>
 
+<div class="b-side-profile">
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>What you want to know</mat-label>
+      <input matInput placeholder="Placeholder">
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </p>
+  <div class="b-side-profile-img">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Su Peng</mat-card-title>
+        <mat-card-subtitle>Software Engineer</mat-card-subtitle>
+      </mat-card-header>
+      <p><img mat-card-image src="../../assets/IMG_0331.jpg" alt="Photo of a Clone"></p>
+      <mat-card-content>
+        <p>
+          So much spicy equals so much pain
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="b-side-profile-foot">
+    <span>
+      <i class="fa fa-github fa-2x menu-icon" aria-hidden="true"></i> GIT
+    </span>
+    <span>
+      <i class="fa fa-envelope fa-2x menu-icon" aria-hidden="true"></i> EMAIL
+    </span>
+  </div>
+</div>
+<router-outlet></router-outlet>
 

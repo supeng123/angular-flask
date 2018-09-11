@@ -1,0 +1,26 @@
+<section class="b-admin-editor">
+  <div class="b-left-editor">
+    <p class="login-error" *ngIf="loginErrorString">{{loginErrorString}}</p>
+    <button class="login-btn" mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Title" [formControl]="titleFormControl" [(ngModel)]="title">
+        <mat-error *ngIf="titleFormControl.hasError('required')">
+          Title is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <p-dropdown [options]="labels" [(ngModel)]="selectedLabel" placeholder="Select a Category" optionLabel="name" [showClear]="true"></p-dropdown>
+    </p>
+    <div [froalaEditor]="option" [(froalaModel)]="froalaText"></div>
+  </div>
+  <div class="b-right-preview">
+    <h2>{{title}}</h2>
+    <p>
+      <span><mat-icon matSuffix>bookmark</mat-icon>{{selectedLabel}}</span>
+    </p>
+    <div [froalaView]="froalaText"></div>
+  </div>
+</section>
+
