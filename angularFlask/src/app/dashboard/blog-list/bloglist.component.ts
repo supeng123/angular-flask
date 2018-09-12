@@ -37,6 +37,6 @@ export class BloglistComponent implements OnInit {
   }
 
   showLessWords(paragraph) {
-    return paragraph.substring(0, 500);
+    return paragraph.substring(0, 200);
   }
 }

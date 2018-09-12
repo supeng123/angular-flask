@@ -53,10 +53,8 @@ a:hover {
   align-items: center;
     p {
         width: 230px;
-        flex-grow: 1;
     }
     .b-side-profile-img{
-      flex-grow: 3;
     }
 }
 
@@ -65,19 +63,26 @@ a:hover {
   background: inherit;
   display: flex;
   flex-direction: column;
+  .mat-card-header,.mat-card-content{
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+  .mat-card-header-text{
+    order: 2;
+    align-self: center;
+  }
   p {
     display: flex;
     align-content: stretch;
     flex-direction: row;
-    flex-grow: 2;
     align-self: center;
   }
   .mat-card-image{
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    width: 50%;
-    height: 50%;
+    width: 40%;
+    height: 20%;
     margin: 0;
   }
 }
@@ -86,14 +91,27 @@ a:hover {
   box-shadow: none;
 }
 
-/deep/.example-header-image.mat-card-avatar{
-  width: 0;
-  height: 0;
+/deep/.example-header-image{
+  display: block;
 }
 
 /deep/.b-side-profile-foot {
   display: flex;
   justify-content: space-between;
   width: 230px;
-  flex-grow: 1;
+  .b-side-git,.b-side-email,.b-side-more{
+    display: inline-block;
+    color: #999;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+
+    i {
+      background-color: #f9f9f9;
+    }
+  }
+  .b-side-git:hover,.b-side-email:hover,.b-side-more:hover{
+    color: #333;
+    text-decoration: none;
+  }
 }

@@ -31,11 +31,14 @@
   <div class="b-side-profile-img">
     <mat-card class="example-card">
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Su Peng</mat-card-title>
-        <mat-card-subtitle>Software Engineer</mat-card-subtitle>
+          <img mat-card-image src="../../assets/IMG_0331.jpg" alt="Photo of a Clone">
+          <mat-card-title>Su Peng</mat-card-title>
+          <mat-card-subtitle>Software Engineer</mat-card-subtitle>
+          <mat-card-subtitle>
+            <i class="fa fa-home fa-2x menu-icon" aria-hidden="true"></i>
+            Hangzhou
+          </mat-card-subtitle>
       </mat-card-header>
-      <p><img mat-card-image src="../../assets/IMG_0331.jpg" alt="Photo of a Clone"></p>
       <mat-card-content>
         <p>
           So much spicy equals so much pain
@@ -44,12 +47,15 @@
     </mat-card>
   </div>
   <div class="b-side-profile-foot">
-    <span>
-      <i class="fa fa-github fa-2x menu-icon" aria-hidden="true"></i> GIT
-    </span>
-    <span>
-      <i class="fa fa-envelope fa-2x menu-icon" aria-hidden="true"></i> EMAIL
-    </span>
+    <a href="https://github.com/supeng123" class="b-side-git" target="_blank">
+      <i class="fa fa-github fa-2x menu-icon" aria-hidden="true"></i>
+    </a>
+    <a href="#" class="b-side-more" target="_blank">
+      <i class="fa fa-ellipsis-h fa-2x menu-icon" aria-hidden="true"></i>
+    </a>
+    <a href="#" class="b-side-email" target="_blank">
+      <i class="fa fa-envelope fa-2x menu-icon" aria-hidden="true"></i>
+    </a>
   </div>
 </div>
 <router-outlet></router-outlet>

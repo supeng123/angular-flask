@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'admin/login', component: LoginComponent},
   {
     path: '',
-    redirectTo: '/index',
+    redirectTo: '/index/insight',
     pathMatch : 'full'
   },
   {path: '**', component: NotfoundComponent}
