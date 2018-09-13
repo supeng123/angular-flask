@@ -13,8 +13,4 @@ export class NotfoundComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClick() {
-    this.route.navigate(['/index']);
-  }
-
 }

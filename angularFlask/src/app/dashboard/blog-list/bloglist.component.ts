@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Route, Router, ActivatedRoute} from '@angular/router'
 import blogConsts from '../../common/blog-constants'
 import {AppService} from '../../app.service';
+import {PageEvent} from '@angular/material';
 import * as _ from 'lodash';
 
 @Component({
@@ -12,6 +13,8 @@ import * as _ from 'lodash';
 export class BloglistComponent implements OnInit {
   page;
   currentPagePosts = [];
+  dataSource = [];
+  pageEvent: PageEvent;
   posts;
 
   constructor(private route: Router, private activateRoute: ActivatedRoute, public appService: AppService) { }
@@ -24,11 +27,12 @@ export class BloglistComponent implements OnInit {
             .then((mes) => {
               this.posts = mes[0];
               this.appService.setPosts(this.posts);
-              this.currentPagePosts = !_.isEmpty(this.posts) ? this.posts.filter(post => post.label === this.page) : [];
+              this.currentPagePosts = !_.isEmpty(this.posts) ? this.showLatestPost(this.posts.filter(post => post.label === this.page)) : [];
             });
         }else {
-          this.currentPagePosts = this.appService.getPosts().filter(post => post.label === this.page);
+          this.currentPagePosts = this.showLatestPost(this.appService.getPosts().filter(post => post.label === this.page));
         }
+      this.dataSource = this.currentPagePosts.slice(0, 2);
     }
   }
 
@@ -36,7 +40,17 @@ export class BloglistComponent implements OnInit {
     this.route.navigate(['../blog-detail/'],{relativeTo: this.activateRoute, queryParams: {id, label}});
   }
 
+  showLatestPost(posts) {
+    return _.reverse(_.sortBy(posts, post => post.create_time));
+  }
+
   showLessWords(paragraph) {
     return paragraph.substring(0, 200);
+  }
+
+  getCurrentPageData(event) {
+    const end = (event.pageIndex + 1) * event.pageSize;
+    const start = event.pageIndex * event.pageSize;
+    this.dataSource = this.currentPagePosts.slice(start, end);
   }
 }
