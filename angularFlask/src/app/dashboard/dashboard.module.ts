@@ -22,14 +22,14 @@ import {
   MatTableModule
 } from '@angular/material';
 import {FileUploadModule} from "ng2-file-upload";
-
-// import { MessageComponent, MessageDetailComponent } from './message/message.component';
+import {ProgressBarModule} from 'primeng/progressbar';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     DashboardRoutingModule,
+    ProgressBarModule,
     MatPaginatorModule,
     MatCardModule,
     MatIconModule,

@@ -14,7 +14,7 @@
             <div class="ui-g-10 ui-sm-6"><b>{{post.label}}</b></div>
 
             <div class="ui-g-2 ui-sm-6">content: </div>
-            <div class="ui-g-10 ui-sm-6"><b>{{post.content}}</b></div>
+            <div class="ui-g-10 ui-sm-6"><b [innerHTML]="showLessWords(post.content)"></b></div>
 
             <div class="ui-g-2 ui-sm-6">Time: </div>
             <div class="ui-g-10 ui-sm-6"><b>{{post.create_time}}</b></div>

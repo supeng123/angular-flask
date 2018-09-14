@@ -24,8 +24,8 @@ export class BlogdetailComponent implements OnInit {
     )
   }
 
-  onClick() {
-    this.route.navigate(['/index']);
+  onClick(article) {
+    this.route.navigate([`/index/${article.label}`]);
   }
 
 }

@@ -103,4 +103,8 @@ export class BlogeditorlistComponent implements OnInit {
     Validators.required,
   ]);
 
+  showLessWords(paragraph) {
+    return paragraph.substring(0, 100) + '...';
+  }
+
 }

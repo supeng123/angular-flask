@@ -16,23 +16,29 @@ export class BloglistComponent implements OnInit {
   dataSource = [];
   pageEvent: PageEvent;
   posts;
+  shouldShowProgressBar = false;
 
   constructor(private route: Router, private activateRoute: ActivatedRoute, public appService: AppService) { }
 
   ngOnInit() {
     this.page = this.activateRoute.snapshot.routeConfig.path.replace('_', ' ');
+    this.shouldShowProgressBar = true;
     if (!_.isEmpty(_.find(blogConsts.labels ,item => item.name === this.page))){
         if(_.isEmpty(this.appService.getPosts())) {
           this.appService.findAllPosts()
             .then((mes) => {
               this.posts = mes[0];
               this.appService.setPosts(this.posts);
+              this.shouldShowProgressBar = false;
               this.currentPagePosts = !_.isEmpty(this.posts) ? this.showLatestPost(this.posts.filter(post => post.label === this.page)) : [];
+              this.dataSource = this.currentPagePosts.slice(0, 2);
             });
         }else {
+          this.shouldShowProgressBar = false;
           this.currentPagePosts = this.showLatestPost(this.appService.getPosts().filter(post => post.label === this.page));
+          this.dataSource = this.currentPagePosts.slice(0, 2);
         }
-      this.dataSource = this.currentPagePosts.slice(0, 2);
+
     }
   }
 
@@ -45,7 +51,7 @@ export class BloglistComponent implements OnInit {
   }
 
   showLessWords(paragraph) {
-    return paragraph.substring(0, 200);
+    return paragraph.substring(0, 200) + '...';
   }
 
   getCurrentPageData(event) {
