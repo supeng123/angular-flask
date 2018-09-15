@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
 import {Router} from "@angular/router";
 import {AppService} from "../app.service";
 
@@ -16,6 +15,9 @@ export class BackendComponent implements OnInit {
   constructor(private router: Router, private appService: AppService) { }
 
   ngOnInit() {
+    if(!this.appService.isAlReadyLogin()) {
+      this.router.navigate(['/admin/login'], {});
+    }
   }
 
 }

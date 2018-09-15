@@ -24,4 +24,7 @@
                    (page)="getCurrentPageData($event)">
     </mat-paginator>
   </div>
+  <div *ngIf="shouldShowNoData()" class="b-single-noData">
+    no related post found
+  </div>
 </div>

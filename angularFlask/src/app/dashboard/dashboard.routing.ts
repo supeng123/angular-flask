@@ -18,6 +18,7 @@ const dashboardRoutes: Routes = [
       {path: 'css', component: BloglistComponent},
       {path: 'nodejs', component: BloglistComponent},
       {path: 'insight', component: BloglistComponent},
+      {path: 'search', component: BloglistComponent},
     ]
   },
 

@@ -5,7 +5,8 @@ const blogConsts = Object.freeze({
     {name: 'javascript', value: 'javascript'},
     {name: 'css', value: 'css'},
     {name: 'nodejs', value: 'nodejs'},
-    {name: 'insight', value: 'insight'}
+    {name: 'insight', value: 'insight'},
+    {name: 'search', value: 'search'}
   ]
 });
 

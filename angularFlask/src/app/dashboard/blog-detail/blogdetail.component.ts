@@ -25,7 +25,8 @@ export class BlogdetailComponent implements OnInit {
   }
 
   onClick(article) {
-    this.route.navigate([`/index/${article.label}`]);
+    const label = article.label.replace(' ', '_');
+    this.route.navigate([`/index/${label}`]);
   }
 
 }

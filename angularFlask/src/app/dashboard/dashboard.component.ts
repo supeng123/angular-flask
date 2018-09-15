@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { AppService } from "../app.service";
 import {FileUploader} from "ng2-file-upload";
 
@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
   targetValue = '';
   imageUrl: string = '';
   token = localStorage.getItem('token');
+  keywords = '';
 
   public uploader: FileUploader = new FileUploader({
     url:'http://66.42.63.221:5000/api/uploadFile',
@@ -21,14 +22,21 @@ export class DashboardComponent implements OnInit {
     headers: [{name: 'x-auth-token', value: this.token},{name: 'Authorization', value: this.token}]
   });
 
-  constructor(private appService: AppService, private router: Router) {
-    // if(!this.appService.isAlReadyLogin()) {
-    //   this.router.navigate(['/admin/login'], {});
-    // }
+  constructor(private appService: AppService, private router: Router, private activateRoute: ActivatedRoute,) {
+
   }
 
   selectedFileOnChanged(event:any) {
     this.targetValue = event.target.value;
+  }
+
+  searchPosts() {
+    if (!this.isKeywordsValid()) return;
+    this.router.navigate(['/index/search'],{relativeTo: this.activateRoute, queryParams: {'keywords':this.keywords}});
+  }
+
+  isKeywordsValid(){
+    return this.keywords.length >= 2;
   }
 
   uploadFile() {

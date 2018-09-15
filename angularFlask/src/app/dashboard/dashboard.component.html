@@ -23,9 +23,11 @@
   <p>
     <mat-form-field appearance="legacy">
       <mat-label>What you want to know</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>search</mat-icon>
-      <mat-hint></mat-hint>
+      <input matInput placeholder="Placeholder" [(ngModel)] = keywords>
+      <mat-icon matSuffix (click)="searchPosts()">search</mat-icon>
+      <mat-error *ngIf="!isKeywordsValid()">
+        two words above <strong>required</strong>
+      </mat-error>
     </mat-form-field>
   </p>
   <div class="b-side-profile-img">

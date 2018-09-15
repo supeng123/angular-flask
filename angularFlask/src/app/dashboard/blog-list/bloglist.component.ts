@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Route, Router, ActivatedRoute} from '@angular/router'
 import blogConsts from '../../common/blog-constants'
 import {AppService} from '../../app.service';
-import {PageEvent} from '@angular/material';
 import * as _ from 'lodash';
 
 @Component({
@@ -14,7 +13,6 @@ export class BloglistComponent implements OnInit {
   page;
   currentPagePosts = [];
   dataSource = [];
-  pageEvent: PageEvent;
   posts;
   shouldShowProgressBar = false;
 
@@ -23,23 +21,40 @@ export class BloglistComponent implements OnInit {
   ngOnInit() {
     this.page = this.activateRoute.snapshot.routeConfig.path.replace('_', ' ');
     this.shouldShowProgressBar = true;
-    if (!_.isEmpty(_.find(blogConsts.labels ,item => item.name === this.page))){
-        if(_.isEmpty(this.appService.getPosts())) {
-          this.appService.findAllPosts()
-            .then((mes) => {
-              this.posts = mes[0];
-              this.appService.setPosts(this.posts);
-              this.shouldShowProgressBar = false;
-              this.currentPagePosts = !_.isEmpty(this.posts) ? this.showLatestPost(this.posts.filter(post => post.label === this.page)) : [];
-              this.dataSource = this.currentPagePosts.slice(0, 2);
-            });
-        }else {
-          this.shouldShowProgressBar = false;
-          this.currentPagePosts = this.showLatestPost(this.appService.getPosts().filter(post => post.label === this.page));
-          this.dataSource = this.currentPagePosts.slice(0, 2);
-        }
+    this.activateRoute.queryParams.subscribe(
+      (params: any) => {
+        const keywords = params['keywords'];
+        this.selectCurrentPosts(keywords, this.page);
+      }
+    );
+  }
 
+  selectCurrentPosts(keywords, pageName) {
+    if (!_.isEmpty(_.find(blogConsts.labels ,item => item.name === pageName))){
+      if(_.isEmpty(this.appService.getPosts())) {
+        this.appService.findAllPosts()
+          .then((mes) => {
+            this.posts = mes[0];
+            this.appService.setPosts(this.posts);
+            this.shouldShowProgressBar = false;
+            this.currentPagePosts = !_.isEmpty(this.posts) ? this.showLatestPost(this.getCurrentThemePosts(mes[0], this.page, keywords)) : [];
+            this.dataSource = this.currentPagePosts.length > 2 ? this.currentPagePosts.slice(0, 2) : this.currentPagePosts;
+          });
+      }else {
+        this.shouldShowProgressBar = false;
+        const posts = this.appService.getPosts();
+        this.currentPagePosts = this.showLatestPost(this.getCurrentThemePosts(posts, this.page, keywords));
+        this.dataSource = this.currentPagePosts.length > 2 ? this.currentPagePosts.slice(0, 2) : this.currentPagePosts;
+      }
     }
+  }
+
+  getCurrentThemePosts(serverDatas, pageName, keywords) {
+    return !_.isEmpty(keywords) ? serverDatas.filter(post => post.title.includes(keywords)) : serverDatas.filter(post => post.label === pageName);
+  }
+
+  shouldShowNoData() {
+    return _.isEmpty(this.dataSource) && !this.shouldShowProgressBar;
   }
 
   onClick(id, label) {
