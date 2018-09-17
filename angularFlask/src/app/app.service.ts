@@ -11,10 +11,8 @@ export class AppService {
   constructor(private router: Router, private http: HttpClient) {
   }
 
-
   isAlReadyLogin() {
     return this.isLogin;
-    // return true;
   }
 
   setLogInStatu(status) {

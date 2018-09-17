@@ -18,7 +18,6 @@ const backendRoutes: Routes = [
       {path: 'nodejs', component: BlogeditorlistComponent},
     ]
   },
-
 ];
 
 @NgModule({
