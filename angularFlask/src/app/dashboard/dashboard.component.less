@@ -115,3 +115,54 @@ a:hover {
     text-decoration: none;
   }
 }
+
+.b-responsive-navigation{
+  display: none;
+}
+
+.b-sidebar-navigation{
+  display: none;
+}
+
+@media only screen and (max-width: 1200px) {
+  .b-side-navigation, .b-side-profile {
+    display: none;
+  }
+
+  .b-responsive-navigation{
+    display: block;
+  }
+
+  .b-sidebar-navigation{
+    display: block;
+  }
+
+  .b-content{
+    left: 0;
+    width: 100%;
+  }
+
+  /deep/.example-card.mat-card .mat-card-header{
+    margin-left: -15px;
+  }
+
+  .example-card.mat-card .mat-card-content{
+    margin-left: 0;
+  }
+
+  .b-sidebar-navigation{
+    /deep/.ui-menu{
+      width: 100%;
+      background: #fff !important;
+      padding:0;
+      margin: 0;
+      border:0;
+    }
+    .p-sidebar-search {
+      margin-top: 20px;
+      /deep/.mat-form-field-infix{
+        width:220px;
+      }
+    }
+  }
+}

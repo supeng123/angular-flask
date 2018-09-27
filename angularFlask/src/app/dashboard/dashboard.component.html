@@ -18,6 +18,42 @@
     <a [routerLink]="['/index/insight']" routerLinkActive="active">insights</a>
   </li>
 </ul>
+<div class="b-responsive-navigation">
+  <button type="text" (click)="display = true" icon="pi pi-plus" class="fa fa-bars" label="Show"></button>
+</div>
+<p-sidebar [(visible)]="display" position="left" [ngStyle]="{width:'25em'}" class="b-sidebar-navigation">
+    <p-menu [model]="items"></p-menu>
+    <p class="p-sidebar-search">
+        <mat-form-field appearance="legacy">
+          <mat-label>What you want to know</mat-label>
+          <input matInput placeholder="Placeholder" [(ngModel)] = keywords>
+          <mat-icon matSuffix (click)="searchPosts()">search</mat-icon>
+          <mat-error *ngIf="!isKeywordsValid()">
+            two words above <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <div class="b-side-profile-img">
+          <mat-card class="example-card">
+            <mat-card-header>
+                <img mat-card-image src="../../assets/IMG_0331.jpg" alt="Photo of a Clone">
+                <mat-card-title>Su Peng</mat-card-title>
+                <mat-card-subtitle>Software Engineer</mat-card-subtitle>
+                <mat-card-subtitle>
+                  <i class="fa fa-home fa-2x menu-icon" aria-hidden="true"></i>
+                  Hangzhou
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                So much spicy equals so much pain
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+
+</p-sidebar>
 
 <div class="b-side-profile">
   <p>

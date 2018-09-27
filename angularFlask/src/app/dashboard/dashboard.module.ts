@@ -23,6 +23,8 @@ import {
 } from '@angular/material';
 import {FileUploadModule} from "ng2-file-upload";
 import {ProgressBarModule} from 'primeng/progressbar';
+import {SidebarModule} from 'primeng/sidebar';
+import {MenuModule} from 'primeng/menu';
 
 @NgModule({
   imports: [
@@ -30,6 +32,8 @@ import {ProgressBarModule} from 'primeng/progressbar';
     FormsModule,
     DashboardRoutingModule,
     ProgressBarModule,
+    SidebarModule,
+    MenuModule,
     MatPaginatorModule,
     MatCardModule,
     MatIconModule,
