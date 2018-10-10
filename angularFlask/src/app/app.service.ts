@@ -27,7 +27,7 @@ export class AppService {
         this.setLogInStatu(true);
         localStorage.setItem('token', message['token']);
         localStorage.setItem('user_id', message['user_id']);
-        this.router.navigate(['/backend'], {});
+        this.router.navigate(['/backend/blog-list'], {});
 
         const obj = {
           user_id: message['user_id'],

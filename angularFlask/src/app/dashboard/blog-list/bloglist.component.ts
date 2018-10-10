@@ -38,13 +38,13 @@ export class BloglistComponent implements OnInit {
             this.appService.setPosts(this.posts);
             this.shouldShowProgressBar = false;
             this.currentPagePosts = !_.isEmpty(this.posts) ? this.showLatestPost(this.getCurrentThemePosts(mes[0], this.page, keywords)) : [];
-            this.dataSource = this.currentPagePosts.length > 2 ? this.currentPagePosts.slice(0, 2) : this.currentPagePosts;
+            this.dataSource = this.currentPagePosts.length > 10 ? this.currentPagePosts.slice(0, 10) : this.currentPagePosts;
           });
       }else {
         this.shouldShowProgressBar = false;
         const posts = this.appService.getPosts();
         this.currentPagePosts = this.showLatestPost(this.getCurrentThemePosts(posts, this.page, keywords));
-        this.dataSource = this.currentPagePosts.length > 2 ? this.currentPagePosts.slice(0, 2) : this.currentPagePosts;
+        this.dataSource = this.currentPagePosts.length > 10 ? this.currentPagePosts.slice(0, 10) : this.currentPagePosts;
       }
     }
   }

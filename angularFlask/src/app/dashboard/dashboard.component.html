@@ -19,7 +19,7 @@
   </li>
 </ul>
 <div class="b-responsive-navigation">
-  <button type="text" (click)="display = true" icon="pi pi-plus" class="fa fa-bars" label="Show"></button>
+  <button type="text" (click)="setDisplay()" icon="pi pi-plus" class="fa fa-bars" label="Show"></button>
 </div>
 <p-sidebar [(visible)]="display" position="left" [ngStyle]="{width:'25em'}" class="b-sidebar-navigation">
     <p-menu [model]="items"></p-menu>

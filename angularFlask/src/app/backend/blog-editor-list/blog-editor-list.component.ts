@@ -18,6 +18,11 @@ export class BlogeditorlistComponent implements OnInit {
   froalaText:string;
   title:string = '';
   display: boolean = false;
+
+  sortOptions = [];
+  sortKey: string;
+  sortField: string;
+  sortOrder: number;
   constructor(private backend: BackendService, private appService: AppService) {
   }
 
@@ -29,7 +34,26 @@ export class BlogeditorlistComponent implements OnInit {
     this.post_id = post.id
   }
 
+  onSortChange(event) {
+    let value = event.value;
+
+    if (value.indexOf('!') === 0) {
+      this.sortOrder = -1;
+      this.sortField = value.substring(1, value.length);
+    }
+    else {
+      this.sortOrder = 1;
+      this.sortField = value;
+    }
+  }
+
   ngOnInit() {
+    this.sortOptions = [
+      {label: 'Newest First', value: '!create_time'},
+      {label: 'Oldest First', value: 'create_time'},
+      {label: 'label', value: 'label'}
+    ];
+
     this.option = {
       language: "zh_cn",
       placeholderText: "请输入内容",

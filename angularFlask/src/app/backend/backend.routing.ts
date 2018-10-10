@@ -10,12 +10,7 @@ const backendRoutes: Routes = [
     component: BackendComponent,
     children: [
       {path: 'blog-editor', component: BlogeditorComponent},
-      {path: 'blog-list', component: BlogeditorlistComponent},
-      {path: 'deep_learning', component: BlogeditorlistComponent},
-      {path: 'machine_learning', component: BlogeditorlistComponent},
-      {path: 'javascript', component: BlogeditorlistComponent},
-      {path: 'css', component: BlogeditorlistComponent},
-      {path: 'nodejs', component: BlogeditorlistComponent},
+      {path: 'blog-list', component: BlogeditorlistComponent}
     ]
   },
 ];

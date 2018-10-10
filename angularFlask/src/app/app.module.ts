@@ -29,6 +29,8 @@ import {MenubarModule} from 'primeng/menubar';
 import {SlideMenuModule} from 'primeng/slidemenu';
 import {MenuModule} from 'primeng/menu';
 import {InputTextModule} from 'primeng/inputtext';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -59,7 +61,8 @@ import {InputTextModule} from 'primeng/inputtext';
     MatSidenavModule,
     AppRouteModule,
     LayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

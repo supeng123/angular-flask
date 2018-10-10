@@ -10,11 +10,12 @@ import {MenuItem} from 'primeng/api';
   styleUrls: ['./dashboard.component.less']
 })
 export class DashboardComponent implements OnInit {
-  private items: MenuItem[];
+  public items: MenuItem[];
   targetValue = '';
   imageUrl: string = '';
   token = localStorage.getItem('token');
   keywords = '';
+  display = false;
 
   public uploader: FileUploader = new FileUploader({
     url:'http://66.42.63.221:5000/api/uploadFile',
@@ -26,6 +27,10 @@ export class DashboardComponent implements OnInit {
 
   constructor(private appService: AppService, private router: Router, private activateRoute: ActivatedRoute,) {
 
+  }
+
+  setDisplay() {
+    this.display = true;
   }
 
   selectedFileOnChanged(event:any) {

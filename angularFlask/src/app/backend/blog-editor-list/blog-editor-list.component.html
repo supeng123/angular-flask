@@ -1,5 +1,23 @@
 <section class="b-editor-list">
-  <p-dataView [value]="posts" [paginator]="true" [rows]="3">
+  <p-dataView #dv [value]="posts" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="title"
+              [sortField]="sortField" [sortOrder]="sortOrder">
+    <p-header>
+      <div class="ui-helper-clearfix">
+        <div class="ui-g">
+          <div class="ui-g-12 ui-md-4">
+            <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange($event)" [autoWidth]="false" [style]="{'min-width':'15em'}"></p-dropdown>
+          </div>
+          <div class="ui-g-6 ui-md-4 filter-container">
+            <div style="position:relative">
+              <input type="search" pInputText placeholder="Search by label" (keyup)="dv.filter($event.target.value)">
+            </div>
+          </div>
+          <div class="ui-g-6 ui-md-4" style="text-align:right">
+
+          </div>
+        </div>
+      </div>
+    </p-header>
     <ng-template let-post pTemplate="listItem">
       <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
         <div class="ui-g-12 ui-md-3" style="text-align:center; align-self: center">
