@@ -3,7 +3,7 @@
     <h2>{{article.title}}</h2>
     <div class="b-single-title">
       <span><i class="fa fa-bookmark fa-x menu-icon" aria-hidden="true"></i>{{article.label}}</span>
-      <span><i class="fa fa-calendar fa-x menu-icon" aria-hidden="true"></i>{{article.create_time.split('T')[0]}}</span>
+      <span><i class="fa fa-calendar fa-x menu-icon" aria-hidden="true"></i>{{article.create_time.split('T')[0].substr(5)}}</span>
     </div>
   </header>
   <section class="b-single-content" [innerHTML]="article.content">

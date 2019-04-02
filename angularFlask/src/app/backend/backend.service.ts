@@ -13,7 +13,7 @@ export class BackendService {
   addNewPost (object) {
     const body = JSON.stringify(object);
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', object.Authorization);
-    return this.http.post('http://66.42.63.221:5000/api/addNewPost', body, {headers: headers})
+    return this.http.post('http://202.182.124.185:5000/api/addNewPost', body, {headers: headers})
       .subscribe((res) => {
       this.message = res;
       console.log('one post is successfully submitted');
@@ -24,14 +24,14 @@ export class BackendService {
   deletePost(obj) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', obj.token);
     const body = JSON.stringify(obj);
-    return this.http.post('http://66.42.63.221:5000/api/deletePost',body, {headers})
+    return this.http.post('http://202.182.124.185:5000/api/deletePost',body, {headers})
       .toPromise();
   }
 
   updatePost(obj) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', obj.token);
     const body = JSON.stringify(obj);
-    return this.http.post('http://66.42.63.221:5000/api/updatePost',body, {headers})
+    return this.http.post('http://202.182.124.185:5000/api/updatePost',body, {headers})
       .toPromise();
   }
 

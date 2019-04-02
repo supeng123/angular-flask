@@ -62,7 +62,7 @@ export class BlogeditorComponent implements OnInit {
         tabSize: 4
       },
       // 上传图片，视频等稳健配置
-      imageUploadURL:"http://66.42.63.221:5000/api/uploadImg",//GLOBAL.INCONFIG.getIP()+接口名称,
+      imageUploadURL:"http://202.182.124.185:5000/api/uploadImg",//GLOBAL.INCONFIG.getIP()+接口名称,
       // imageUploadParams:{uid:this.questionListService.userInfo.id},//接口其他传参,默认为空对象{},
       imageUploadMethod:"POST",//POST/GET,
       requestWithCredentials: true,
@@ -70,7 +70,7 @@ export class BlogeditorComponent implements OnInit {
       requestHeaders: {
         Authorization: this.token
       },
-      imageManagerLoadURL: "http://66.42.63.221:5000/api/uploadImg",
+      imageManagerLoadURL: "http://202.182.124.185:5000/api/uploadImg",
       imageManagerLoadMethod: "POST", // Additional load params.
       imageManagerLoadParams: {Authorization: this.token},
       // 事件, 每次输入,就将值传递给父组件, 或者使用失去焦点的时候传递。
@@ -78,8 +78,10 @@ export class BlogeditorComponent implements OnInit {
         'froalaEditor.keyup': function (e, editor) {
         },
         'froalaEditor.image.uploaded': function (e, editor, response) {
+          console.log('uploaded'+ response)
         },
         'froalaEditor.image.inserted': function (e, editor, $img, response) {
+          console.log('inserted'+ response)
         },
         'froalaEditor.image.error': function (e, editor, error, response) {
         },

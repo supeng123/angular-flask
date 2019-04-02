@@ -22,7 +22,7 @@ export class AppService {
   logIn(object) {
     const body = JSON.stringify(object);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post('http://66.42.63.221:5000/api/login', body, {headers: headers})
+    return this.http.post('http://202.182.124.185:5000/api/login', body, {headers: headers})
       .subscribe(message => {
         this.setLogInStatu(true);
         localStorage.setItem('token', message['token']);
@@ -41,14 +41,14 @@ export class AppService {
   signUp(object) {
     const body = JSON.stringify(object);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post('http://66.42.63.221:5000/api/signup', body, {headers: headers})
+    return this.http.post('http://202.182.124.185:5000/api/signup', body, {headers: headers})
       .map(titles => titles,
         error => error);
   }
 
   findAllPosts() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.get('http://66.42.63.221:5000/api/findAllPosts', {headers})
+    return this.http.get('http://202.182.124.185:5000/api/findAllPosts', {headers})
       .toPromise();
   }
 

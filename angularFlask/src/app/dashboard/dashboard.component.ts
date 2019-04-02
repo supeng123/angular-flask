@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   display = false;
 
   public uploader: FileUploader = new FileUploader({
-    url:'http://66.42.63.221:5000/api/uploadFile',
+    url:'http://202.182.124.185:5000/api/uploadFile',
     method: 'POST',
     authToken: this.token,
     authTokenHeader: this.token,

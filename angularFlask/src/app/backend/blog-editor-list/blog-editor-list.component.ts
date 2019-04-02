@@ -62,14 +62,14 @@ export class BlogeditorlistComponent implements OnInit {
       codeMirrorOptions: {
         tabSize: 4
       },
-      imageUploadURL:"http://66.42.63.221:5000/api/uploadImg",
+      imageUploadURL:"http://202.182.124.185:5000/api/uploadImg",
       imageUploadMethod:"POST",
       requestWithCredentials: true,
       requestWithCORS: true,
       requestHeaders: {
         Authorization: localStorage.getItem('token')
       },
-      imageManagerLoadURL: "http://66.42.63.221:5000/api/uploadImg",
+      imageManagerLoadURL: "http://202.182.124.185:5000/api/uploadImg",
       imageManagerLoadMethod: "POST",
       imageManagerLoadParams: {Authorization: localStorage.getItem('token')},
       events: {
